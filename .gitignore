@@ -6,6 +6,9 @@
 build/
 DerivedData/
 
+### Vapor ###
+Config/secrets
+
 ## Various settings
 *.pbxuser
 !default.pbxuser
@@ -21,6 +24,7 @@ xcuserdata/
 *.moved-aside
 *.xccheckout
 *.xcscmblueprint
+*.xcodeproj
 .DS_Store
 
 ## Obj-C/Swift specific
@@ -36,8 +40,8 @@ playground.xcworkspace
 # Swift Package Manager
 #
 # Add this line if you want to avoid checking in source code from Swift Package Manager dependencies.
-# Packages/
-# Package.pins
+Packages/
+Package.pins
 .build/
 
 # CocoaPods
