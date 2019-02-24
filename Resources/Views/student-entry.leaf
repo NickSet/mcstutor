@@ -1,0 +1,96 @@
+#set("style-sheets") {
+}
+
+#set("title"){Student Entry}
+
+#set("body") {
+    <div class="row">
+        <img class="img-left mt-2" src="/images/Logo.svg">
+        <h3 class="ml-2 mt-3 align-items-center d-flex">MCS Tutor Tracker</h3>
+    </div>
+    <div class="row">
+        <div class="col-10 col-md-6 col-lg-4 mx-auto">
+            <h1 class="text-center mt-5">Student Entry</h1>
+            <form method="post">
+                <div class="form-group">
+                    <label for="inputName">Student Name</label>
+                    <input type="text" id="inputName" class="form-control" placeholder="John Doe">
+                </div>
+                <div class="form-group">
+                    <label for="inputCourse">Course</label>
+                    <select id="inputCourse" class="form-control">
+                        <option selected disabled>Choose one</option>
+                        <optgroup label="Computer Science">
+                        <option>CSC 1010: Object Oriented Programming</option>
+                        <option>CSC 1100: Computer Literacy</option>
+                        <option>CSC 1180: Foundations of Computer Programming in C/C++</option>
+                        <option>CSC 2180: Data Structures</option>
+                        <option>CSC 2220: Programming in Java</option>
+                        <option>CSC 2230: Programming in C#</option>
+                        <option>CSC 2300: Software Engineering</option>
+                        <option>CSC 3050: Digital Logic</option>
+                        <option>CSC 3180: Introduction to Algorithms</option>
+                        <option>CSC 3250: UNIX Systems</option>
+                        <option>CSC 3260: Introduction to Human Computer Interaction</option>
+                        <option>CSC 3300: Fundamentals of Computer Science</option>
+                        <option>CSC 3380: Introduction to Numerical Methods</option>
+                        <option>CSC 3400: Database Design and Applications</option>
+                        <option>CSC 3600: Operations Research</option>
+                        <option>CSC 3710: Discrete Structures</option>
+                        <option>CSC 3750: Web Technologies</option>
+                        <option>CSC 4000: Operating Systems: Theory and Practice</option>
+                        <option>CSC 4110: Advanced Database Systems</option>
+                        <option>CSC 4150: Introduction to Robotics and Artificial Intelligence</option>
+                        <option>CSC 4200: Programming Languages</option>
+                        <option>CSC 4300: Computer Architecture</option>
+                        <option>CSC 4350: Computer Networks</option>
+                        <option>CSC 4380: Information Security</option>
+                        <option>CSC 4400: Computer Graphics</option>
+                        <option>CSC 4450: Introduction to Compilers</option>
+                        <option>CSC 4600 Information Characteristics</option>
+                        <optgroup label="Math">
+                        <option>MTH 0900: Mathematics</option>
+                        <option>MTH 1010: College Algebra</option>
+                        <option>MTH 1011: College Algebra Recitation</option>
+                        <option>MTH 1110: Pre-calculus I</option>
+                        <option>MTH 1050: Applications of Mathematics</option>
+                        <option>MTH 1180: Elementary Probability and Statistics</option>
+                        <option>MTH 1210: Pre-calculus II</option>
+                        <option>MTH 2040: Calculus I</option>
+                        <option>MTH 2050: Calculus II</option>
+                        <option>MTH 3010: Euclidean Geometry</option>
+                        <option>MTH 3020: Problem Solving</option>
+                        <option>MTH 3030: Linear Algebra for Teachers</option>
+                        <option>MTH 3050: History of Mathematics for Teachers</option>
+                        <option>MTH 3060: Calculus III</option>
+                        <option>MTH 3100: Introduction to Mathematical Proofs</option>
+                        <option>MTH 3110: Ordinary Differential Equations</option>
+                        <option>MTH 3120: Introduction to Geometry</option>
+                        <option>MTH 3130: Introduction to Linear Algebra</option>
+                        <option>MTH 3200: Introduction to Number Theory</option>
+                        <option>MTH 3250: Probability and Statistics I</option>
+                        <option>MTH 3350:Abstract Algebra I</option>
+                        <option>MTH 3380: Introduction to Numerical Methods</option>
+                        <option>MTH 3400: Multivariable Calculus</option>
+                        <option>MTH 3440: Advanced Calculus I</option>
+                        <option>MTH 4260: Probability and Statistics II</option>
+                        <option>MTH 4360: Abstract Algebra II</option>
+                        <option>MTH 4450: Advanced Calculus II</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="dateTimeInput">Date and time</label>
+                    <input class="form-control" type="datetime-local" value="2011-08-19T13:45:00" id="dateTimeInput">
+                </div>
+                <button type="submit" class="btn btn-block btn-primary" href="student-entry">Submit</button>
+            </form>
+        </div>
+    </div>
+}
+
+#set("scripts") {
+    <script src="/scripts/student-entry.js"></script>
+}
+
+#embed("master")
+
