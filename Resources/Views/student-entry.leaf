@@ -17,9 +17,9 @@
                     <input type="text" id="inputName" class="form-control" placeholder="John Doe">
                 </div>
                 <div class="form-group">
-                    <label for="inputState">Course</label>
-                    <select id="inputState" class="form-control">
-                        <option selected>Choose one</option>
+                    <label for="inputCourse">Course</label>
+                    <select id="inputCourse" class="form-control">
+                        <option selected disabled>Choose one</option>
                         <optgroup label="Computer Science">
                         <option>CSC 1010: Object Oriented Programming</option>
                         <option>CSC 1100: Computer Literacy</option>
