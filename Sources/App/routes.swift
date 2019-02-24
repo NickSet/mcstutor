@@ -29,6 +29,10 @@ public func routes(_ router: Router) throws {
         return try req.view().render("student-entry", context)
     }
     
+    router.post("student-entry") { req -> Future<View> in
+        return try req.view().render("student-entry")
+    }
+    
     router.post("login") { req -> Future<AnyResponse> in
         // pull out the two login fields
         let username: String = try req.content.syncGet(at: "username")
