@@ -41,4 +41,11 @@ public func configure(
     var migrationConfig = MigrationConfig()
     migrationConfig.add(model: Tutor.self, database: .mysql)
     services.register(migrationConfig)
+    
+    // register Middleware to use Sessions
+    var middlewareConfig = MiddlewareConfig.default()
+    middlewareConfig.use(SessionsMiddleware.self)
+    middlewareConfig.use(FileMiddleware.self)
+    services.register(middlewareConfig)
+    config.prefer(MemoryKeyedCache.self, for: KeyedCache.self)
 }

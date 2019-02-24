@@ -1,0 +1,31 @@
+#set("styleSheets") {
+}
+
+#set("title"){Login}
+
+#set("body") {
+    <div class="row">
+            <img class="img-left mt-2" src="/images/Logo.svg">
+            <h3 class="ml-2 mt-3 align-items-center d-flex">MCS Tutor Tracker</h3>
+    </div>
+    <div class="row">
+        <div class="col-10 col-md-6 col-lg-4 mx-auto mt-5">
+            <h1 class="text-center">Login</h1>
+            <form method="post">
+                <div class="form-group">
+                    <input type="text" class="form-control" id="inputUsername" placeholder="Username">
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" id="inputPassword" placeholder="Password" name="password">
+                </div>
+                <button type="submit" class="btn btn-block btn-primary" aria-describedby="passwordHelp">Submit</button>
+                <small id="passwordHelp" class="form-text text-muted text-center">Forgot your password? <a href="/password-reset">Click here</a>.</small>
+            </form>
+        </div>
+    </div>
+}
+
+#set("scripts") {
+}
+
+#embed("master")

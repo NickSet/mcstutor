@@ -1,0 +1,32 @@
+a {
+  color: #d21245;
+}
+
+a:hover,
+a:active,
+a:focus {
+  color: #a80d36;
+}
+
+body {
+  font-family: 'Lato';
+}
+
+h1, h2, h3 {
+  font-family: 'Cormorant Garamond';
+}
+
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary:visited,
+.btn-primary:focus {
+  background-color: #a80d36;
+  border-color: #a80d36;
+  color: white;
+}
+
+.btn-primary {
+  color: white;
+  background-color: #d21245;
+  border-color: #d21245;
+}
