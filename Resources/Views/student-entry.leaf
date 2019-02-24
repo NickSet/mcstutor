@@ -1,0 +1,15 @@
+#set("style-sheets") {
+}
+
+#set("title"){Student Entry}
+
+#set("body") {
+<row>
+    <h2>Student Entry</h2>
+}
+
+#set("scripts") {
+}
+
+#embed("master")
+

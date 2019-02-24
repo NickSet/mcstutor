@@ -1,8 +1,8 @@
 <!doctype html>
 <html lang="en">
     <head>
-        #embed("headContent")
-        #get(styleSheets)
+        #embed("head-content")
+        #get(style-sheets)
         
         <title>#get(title) - MCS Tutor</title>
     </head>
