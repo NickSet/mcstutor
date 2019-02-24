@@ -14,12 +14,12 @@
             <form method="post">
                 <div class="form-group">
                     <label for="inputName">Student Name</label>
-                    <input type="text" id="inputName" class="form-control" placeholder="John Doe">
+                    <input type="text" id="inputName" name="name" class="form-control" placeholder="John Doe" required>
                 </div>
                 <div class="form-group">
                     <label for="inputCourse">Course</label>
-                    <select id="inputCourse" class="form-control">
-                        <option selected disabled>Choose one</option>
+                    <select id="inputCourse" name="course" class="form-control" required>
+                        <option hidden value="">Choose one</option>
                         <optgroup label="Computer Science">
                         <option>CSC 1010: Object Oriented Programming</option>
                         <option>CSC 1100: Computer Literacy</option>
@@ -80,7 +80,7 @@
                 </div>
                 <div class="form-group">
                     <label for="dateTimeInput">Date and time</label>
-                    <input class="form-control" type="datetime-local" value="2011-08-19T13:45:00" id="dateTimeInput">
+                    <input class="form-control" name="date" type="datetime-local" value="2011-08-19T13:45:00" id="dateTimeInput" required>
                 </div>
                 <button type="submit" class="btn btn-block btn-primary" href="student-entry">Submit</button>
             </form>
