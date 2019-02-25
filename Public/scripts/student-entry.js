@@ -22,3 +22,11 @@ $.fn.setNow = function (onlyBlank) {
 $(document).ready ( function() {
     $('input[type="datetime-local"]').setNow();
 });
+
+$('#signOutModal').on('show.bs.modal', function (event) {
+    var button = $(event.relatedTarget) // Button that triggered the modal
+    var tutee = button.data('tutee') // Extract info from data-* attributes
+    var modal = $(this)
+    modal.find('.modal-body').text('Sign out ' + tutee + '?')
+    modal.find('.modal-footer input').val(tutee)
+});
