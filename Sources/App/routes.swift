@@ -42,8 +42,9 @@ public func routes(_ router: Router) throws {
             throw Abort(.unauthorized)
         }
         
-        let name: String = try req.content.syncGet(at: "tutee")
         
+        let name: String = try req.content.syncGet(at: "tutee")
+        print(name)
         return TutoringEntry.query(on: req).filter(\.tutee == name).filter(\.isActive == true).first().flatMap(to: Response.self) { entry in
             guard var entry = entry else {
                 throw Abort(.notFound)
