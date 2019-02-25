@@ -50,6 +50,7 @@ public func routes(_ router: Router) throws {
                 throw Abort(.notFound)
             }
             entry.isActive = false
+            entry.timeOut = Date()
             return entry.save(on: req).map(to: Response.self) { entry in
                 return req.redirect(to: "/student-entry")
             }
