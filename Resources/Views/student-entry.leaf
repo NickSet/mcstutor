@@ -1,4 +1,5 @@
 #set("style-sheets") {
+    <link rel="stylesheet" href="/styles/student-entry.css">
 }
 
 #set("title"){Student Entry}
@@ -86,6 +87,25 @@
             </form>
         </div>
     </div>
+    #if(entries){
+        <div class="row mt-4">
+        #for(entry in entries) {
+        <div class="card col-md-5 mx-auto mt-4">
+            <div class="card-body">
+                <h5 class="card-title">#(entry.tutee)</h5>
+                <h6 class="card-subtitle mb-2 text-muted">#(entry.course)</h6>
+                <p class="card-text">Time in: #date(entry.timeIn, "HH:mm")</p>
+                <form method="post" action="entry-signout" class="inline">
+                    <input type="hidden" name="extra_submit_param" value="extra_submit_value">
+                        <button type="submit" name="tutee" value="#(entry.tutee)" class="link-button">
+                        Sign Out
+                    </button>
+                </form>
+            </div>
+        </div>
+        }
+        </div>
+    }
 }
 
 #set("scripts") {

@@ -20,14 +20,40 @@ public func routes(_ router: Router) throws {
     }
     
     router.get("student-entry") { req -> Future<View> in
-        let context = [String:String]()
         // make sure we have an authenticated user
         let session = try req.session()
         guard let _ = session["user_id"] else {
             throw Abort(.unauthorized)
         }
         
-        return try req.view().render("student-entry", context)
+        struct EntryContext: Codable {
+            var entries: [TutoringEntry]
+        }
+        
+        return TutoringEntry.query(on: req).filter(\.isActive == true).all().flatMap(to: View.self) { entries in
+            let context = EntryContext(entries: entries)
+            return try req.view().render("student-entry", context)
+        }
+    }
+    
+    router.post("entry-signout") { req -> Future<Response> in
+        let session = try req.session()
+        guard let _ = session["user_id"] else {
+            throw Abort(.unauthorized)
+        }
+        
+        let name: String = try req.content.syncGet(at: "tutee")
+        
+        return TutoringEntry.query(on: req).filter(\.tutee == name).filter(\.isActive == true).first().flatMap(to: Response.self) { entry in
+            guard var entry = entry else {
+                throw Abort(.notFound)
+            }
+            entry.isActive = false
+            return entry.save(on: req).map(to: Response.self) { entry in
+                return req.redirect(to: "/student-entry")
+            }
+        }
+        
     }
     
     router.post("student-entry") { req -> Future<Response> in
