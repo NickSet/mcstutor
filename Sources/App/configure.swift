@@ -40,6 +40,7 @@ public func configure(
     // Register Migrations
     var migrationConfig = MigrationConfig()
     migrationConfig.add(model: Tutor.self, database: .mysql)
+    migrationConfig.add(model: TutoringEntry.self, database: .mysql)
     services.register(migrationConfig)
     
     // register Middleware to use Sessions

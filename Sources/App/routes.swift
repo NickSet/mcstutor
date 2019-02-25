@@ -1,6 +1,7 @@
 import Authentication
 import Fluent
 import FluentMySQL
+import Foundation
 import Leaf
 import Routing
 import Vapor
@@ -19,20 +20,63 @@ public func routes(_ router: Router) throws {
     }
     
     router.get("student-entry") { req -> Future<View> in
-        let context = [String:String]()
         // make sure we have an authenticated user
         let session = try req.session()
         guard let _ = session["user_id"] else {
             throw Abort(.unauthorized)
         }
         
-        return try req.view().render("student-entry", context)
+        struct EntryContext: Codable {
+            var entries: [TutoringEntry]
+        }
+        
+        return TutoringEntry.query(on: req).filter(\.isActive == true).all().flatMap(to: View.self) { entries in
+            let context = EntryContext(entries: entries)
+            return try req.view().render("student-entry", context)
+        }
     }
     
-    router.post("student-entry") { req -> Future<View> in
-        return try req.view().render("student-entry")
+    router.post("entry-signout") { req -> Future<Response> in
+        let session = try req.session()
+        guard let _ = session["user_id"] else {
+            throw Abort(.unauthorized)
+        }
+        
+        let name: String = try req.content.syncGet(at: "tutee")
+        
+        return TutoringEntry.query(on: req).filter(\.tutee == name).filter(\.isActive == true).first().flatMap(to: Response.self) { entry in
+            guard var entry = entry else {
+                throw Abort(.notFound)
+            }
+            entry.isActive = false
+            return entry.save(on: req).map(to: Response.self) { entry in
+                return req.redirect(to: "/student-entry")
+            }
+        }
+        
     }
     
+    router.post("student-entry") { req -> Future<Response> in
+        let session = try req.session()
+        guard let tutorID = session["user_id"] else {
+            throw Abort(.unauthorized)
+        }
+        
+        let name: String = try req.content.syncGet(at: "name")
+        let courseDescription: String = try req.content.syncGet(at: "course")
+        let dateString: String = try req.content.syncGet(at: "date")
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm"
+        let dateIn: Date? = dateFormatter.date(from: dateString)
+        
+        let course = String(courseDescription[..<String.Index(encodedOffset: 8)])
+        let entry = TutoringEntry(tutor: Int(tutorID) ?? 0, tutee: name, course: course, timeIn: dateIn ?? Date(), athelete: false)
+        return entry.save(on: req).map(to: Response.self) { entry in
+            return req.redirect(to: "/student-entry")
+        }
+    }
+
     router.post("login") { req -> Future<AnyResponse> in
         // pull out the two login fields
         let username: String = try req.content.syncGet(at: "username")
