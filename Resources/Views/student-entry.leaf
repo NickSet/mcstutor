@@ -88,7 +88,29 @@
         </div>
     </div>
     #if(entries){
-        <div class="row mt-4">
+        <h1 class="text-center mt-5">Current Sessions</h1>
+        <div class="modal fade" id="signOutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="row mt-4">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Signout Confirmation</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body" id="modalBody">
+                            Tutee's Name
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary">Confirm</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
         #for(entry in entries) {
         <div class="card col-md-5 mx-auto mt-4">
             <div class="card-body">
@@ -97,9 +119,12 @@
                 <p class="card-text">Time in: #date(entry.timeIn, "HH:mm")</p>
                 <form method="post" action="entry-signout" class="inline">
                     <input type="hidden" name="extra_submit_param" value="extra_submit_value">
-                        <button type="submit" name="tutee" value="#(entry.tutee)" class="link-button">
+                    <!--<button type="submit" name="tutee" value="#(entry.tutee)" class="link-button">
                         Sign Out
-                    </button>
+                    </button>-->
+                    <div class="text-center">
+                    <button type="button" class="link-button" data-toggle="modal" data-target="#signOutModal" data-tutee="#(entry.tutee)">Sign Out</button>
+                    </div>
                 </form>
             </div>
         </div>
