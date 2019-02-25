@@ -28,4 +28,5 @@ $('#signOutModal').on('show.bs.modal', function (event) {
     var tutee = button.data('tutee') // Extract info from data-* attributes
     var modal = $(this)
     modal.find('.modal-body').text('Sign out ' + tutee + '?')
-})
+    modal.find('.modal-footer input').val(tutee)
+});
